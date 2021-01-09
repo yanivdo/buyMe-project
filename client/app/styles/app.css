@@ -1,0 +1,215 @@
+body {
+    height: 100vh;
+    width: 100%;
+    background: #0f2027;
+    /* fallback for old browsers */
+    background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+}
+
+.fas {
+    cursor: pointer;
+}
+
+.register_form,
+.login_form {
+    width: 300px;
+}
+
+.form_label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    display: block;
+    transition: all 0.3s;
+    transform: translateY(0rem);
+}
+
+.form-control {
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    font-size: 1.2rem;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    border-radius: 0.2rem;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    width: 90%;
+    display: block;
+    border-bottom: 0.3rem solid transparent;
+    transition: all 0.3s;
+}
+
+.form-control:placeholder-shown+.form_label {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateY(-4rem);
+    transform: translateY(-4rem);
+}
+
+.btn {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 10px 15px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.changeMethod {
+    margin: 0px 16px;
+    width: 100%;
+    transition: all 0.3s;
+}
+
+.specialMsg {
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.changeBTN {
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    height: 20px;
+    font-size: 16px;
+    padding: 5px;
+    margin: 0px;
+}
+
+.changeMethod .bigger {
+    width: 66%;
+}
+
+.changeMethod .smaller {
+    width: 25%;
+}
+
+.taskWrapper {
+    width: 85%;
+}
+
+.taskWrapper .logOut {
+    width: 5%;
+    margin: 0px;
+    padding: 10px;
+    background-color: red;
+}
+
+.taskWrapper .showPopup {
+    cursor: pointer;
+    display: inline-block;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.tasksTitle {
+    text-align: center;
+    width: 15%;
+    display: inline-block;
+}
+
+.taskContainer {
+    width: 20%;
+    text-align: center;
+    margin: 5px 5px;
+    border: 1px solid;
+}
+
+.taskAddPopup {
+    position: fixed;
+    bottom: 30%;
+    right: 40%;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    width: 30%;
+    padding: 5px;
+}
+
+.taskAddPopup .btn {
+    width: 90%;
+}
+
+.taskAddPopup .form-control {
+    width: 68%;
+    margin-top: 10px;
+}
+
+.taskAddPopup .titleContainer {
+    text-align: center;
+    border-bottom: 1px solid;
+}
+
+.titleContainer h3 {
+    display: inline-block;
+}
+
+.titleContainer p {
+    display: inline-block;
+    float: right;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.taskContainer .checkBox {
+    display: inline-block;
+}
+
+.taskContainer .taskName {
+    display: inline-block;
+}
+
+.taskContainer .fas {
+    display: inline-block;
+}
+
+.taskContainer .deleteTask {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.taskContainer .shared {
+    color: blue;
+}
+
+.taskAddPopup h3 {
+    text-align: center;
+}
+
+.shareTaskContainer input {
+    display: inline-block
+}
+
+.shareTaskContainer .name {
+    display: inline-block
+}
+
+.footer {}
+
+.finished,
+.needToFinish,
+.total {
+    display: inline-block;
+    margin: 5px;
+}
+
+.taskAddPopup .finalMsg {
+    margin: 5px;
+}
+
+.allUsersShared {
+    text-align: center;
+}
+
+.editTask {
+    cursor: pointer;
+}

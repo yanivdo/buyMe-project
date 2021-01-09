@@ -1,0 +1,50 @@
+<div class="container">
+  {{#if this.loginOrRegister}}
+  <form class="login_form" method="POST" {{action this.submitLogin on="submit" }}>
+    <label class="form_label" for="email">Email:</label>
+    {{input type='text' class='form-control' name='email' value=email placeholder='email'
+    }}
+    <div class="specialMsg">{{this.emailErrMsg}}</div>
+    <label class="form_label" for="psw"><b>Password:</b></label>
+    {{input
+    type='password' class='form-control' value=password placeholder='password'
+    }}
+    <div>{{this.passwordErrMsg}}</div>
+    <div class="specialMsg">{{this.loginFinalMsg}}</div>
+    <button type="submit" class="loginBtn btn">Login</button>
+    
+  </form>
+  {{else}}
+  <form class="register_form" method="POST" {{action this.submitRegister on="submit" }}>
+    <label class="form_label" for="email">Email:</label>
+    {{input type='text' class='form-control' name='email' value=Remail placeholder='email'
+    }}
+    <div class="specialMsg">{{this.emailErrMsg}}</div>
+     <label class="form_label" for="name">Name:</label>
+        {{input type='text' class='form-control' name='name' value=name placeholder='name'
+    }}
+    <div class="specialMsg">{{this.nameErrMsg}}</div>
+    <label class="form_label" for="psw"><b>Password</b></label>
+    {{input type='password' class='form-control' value=Rpassword placeholder='password'
+    }}
+    <div class="specialMsg">{{this.passwordErrMsg}}</div>
+    <label class="form_label" for="psw-repeat"><b>Repeat Password</b></label>
+    {{input type='password' class='form-control' value=REpassword placeholder='password'
+    }}
+    <div class="specialMsg">{{this.passwordRErrMsg}}</div>
+    <button type="submit" class="registerBtn btn">Register</button>
+    <div class="specialMsg">{{this.loginFinalMsg}}</div>
+  </form>
+  {{/if}}
+  <div class="changeMethod">
+    {{#if this.loginOrRegister}}
+    <div class="changeToLogin btn changeBTN bigger" {{on "click" (fn this.changeLoginSubmit 1)}}>Signin</div>
+    <div class="changeToRgister btn changeBTN smaller" {{on "click" (fn this.changeLoginSubmit 0)}}>Signup</div>
+    {{else}}
+    <div class="changeToLogin btn changeBTN smaller" {{on "click" (fn this.changeLoginSubmit 1)}}>Signin</div>
+    <div class="changeToRgister btn changeBTN bigger" {{on "click" (fn this.changeLoginSubmit 0)}}>Signup</div>
+    {{/if}}
+
+  </div>
+</div>
+{{outlet}}

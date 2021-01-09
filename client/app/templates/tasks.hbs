@@ -1,0 +1,82 @@
+<div class="taskWrapper">
+    <div class="logOut btn" {{on "click" this.logOut}}>Log Out</div>
+    <div class="headerContainer">
+        <h1 class="tasksTitle">Tasks</h1>
+        <div class="showPopup" {{on "click" (fn this.showPopupDiv 1)}}>&#10133;</div>
+    </div>
+    {{#each this.tasks as |task index|}}
+    <div class="taskContainer">
+        {{#if task.done}}
+        <input id=task.id class="checkBox" {{on "click" (fn this.doneTask task.id 0)}} type="checkbox" checked>
+        <del>{{task.name}}</del>
+        {{else}}
+        <input id=task.id class="checkBox" {{on "click" (fn this.doneTask task.id 1)}} type="checkbox">
+        <div class="taskName">{{task.name}}</div>
+        {{/if}}
+        {{#if task.shared}}
+        <div class="fas shared" {{on "click" (fn this.getSharedUsers task.id index)}}>&#xf500;</div>
+        {{else}}
+        <div class="fas" {{on "click" (fn this.getSharedUsers task.id index)}}>&#xf500;</div>
+        {{/if}}
+        <i class="editTask" {{on "click" (fn this.showPopupEditDiv task.id)}} class="fa">&#xf040;</i>
+        <p class="deleteTask" {{on "click" (fn this.deleteTask task.id)}}>&#10005;</p>
+        {{#if task.showPopupShare}}
+        <div class="taskAddPopup">
+            <div class="titleContainer">
+                <h3>Share Task</h3>
+                <p {{on "click" (fn this.closeShareDiv index)}}>&#10005;</p>
+            </div>
+            {{#each this.users as |user|}}
+            <div class="shareTaskContainer">
+                {{#if user.shared}}
+                <input id=task.id checked {{on "click" (fn this.shareTask user.id task.id 0)}} type="checkbox">
+                {{else}}
+                <input id=task.id {{on "click" (fn this.shareTask user.id task.id 1)}} type="checkbox">
+                {{/if}}
+                <div class="name">{{user.name}}</div>
+            </div>
+            {{else}}
+            <div class="allUsersShared">All users shared</div>
+            {{/each}}
+        </div>
+        {{/if}}
+    </div>
+    {{/each}}
+    {{#if this.showPopup}}
+    <div class="taskAddPopup">
+        <div class="titleContainer">
+            <h3>Add Task</h3>
+            <p {{on "click" (fn this.closePopupDiv)}}>&#10005;</p>
+        </div>
+        <form class="addPopup" method="POST" {{action this.addTask on="submit" }}>
+            {{input
+            type='text' class='form-control' value=taskName placeholder='name'
+            }}
+            <div class="finalMsg">{{this.finalMsg}}</div>
+            <button type="submit" class="taskBtn btn">Add Task</button>
+        </form>
+    </div>
+    {{/if}}
+    {{#if this.showPopupEdit}}
+    <div class="taskAddPopup">
+        <div class="titleContainer">
+            <h3>Edit Task</h3>
+            <p {{on "click" (fn this.closePopupEdit)}}>&#10005;</p>
+        </div>
+        <form class="addPopup" method="POST" {{action (fn this.editTask this.editTaskArray.id) on="submit" }}>
+            {{input
+            type='text' class='form-control' value=editTaskSelect
+            }}
+            <div class="finalMsg">{{this.editMsg}}</div>
+            <button type="submit" class="taskBtn btn">Edit Task</button>
+        </form>
+    </div>
+    {{/if}}
+    <div class="footer">
+        <div class="finished">Total Tasks: {{this.totalTasks}}</div>
+        <div class="needToFinish">Done Tasks: {{this.doneTasks}}</div>
+        <div class="total">Need To Finish: {{this.needToFinishTasks}}</div>
+    </div>
+
+</div>
+{{outlet}}
